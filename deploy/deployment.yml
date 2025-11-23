@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gadget-server
+  namespace: gadgets
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gadget-server
+  template:
+    metadata:
+      labels:
+        app: gadget-server
+    spec:
+      containers:
+        - name: server
+          image: muntashir/gadget-server:latest
+          ports:
+            - containerPort: 8443
+          volumeMounts:
+            - name: tls
+              mountPath: /certs
+      volumes:
+        - name: tls
+          secret:
+            secretName: gadget-server-tls
