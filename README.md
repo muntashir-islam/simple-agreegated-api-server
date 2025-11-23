@@ -103,7 +103,7 @@ kubectl create secret tls gadget-server-tls \
   --cert=tls.crt --key=tls.key
 ```
 
-###🏗️ Docker Build Notes
+### 🏗️ Docker Build Notes
 The included `Dockerfile` uses a multi-stage build to ensure a lean final image:
 
 Stage 1: Builds the static Go binary (targeting `linux/amd64` by default).
