@@ -4,9 +4,9 @@ A minimal Kubernetes **Aggregated API (AA) extension** with a custom API group.
 
 This project is a straightforward demonstration of how to build a **custom Kubernetes API** using the **Aggregated API Server** model. This is the standard way to extend the Kubernetes API without modifying the core `$kube-apiserver$` itself.
 
-Instead of embedding logic directly inside the Kubernetes API server, we run our own server behind an $APIService$ resource. Kubernetes automatically routes specific requests—like the example below—to our custom Go server, completely bypassing the built-in API server for that resource.
+Instead of embedding logic directly inside the Kubernetes API server, we run our own server behind an $APIService$ resource. Kubernetes automatically routes specific requests—like the `/apis/gadgets.muntashirislam.com/v1` below—to our custom Go server, completely bypassing the built-in API server for that resource.
 
-> `kubectl get gadgets.example.com` will be routed to our custom Go API server, not the built-in API server.
+> `kubectl get gadgets.muntashirislam.com` will be routed to our custom Go API server, not the built-in API server.
 
 This mechanism is the same one used by key components in the Kubernetes ecosystem:
 * **Metrics Server**
@@ -18,7 +18,7 @@ This mechanism is the same one used by key components in the Kubernetes ecosyste
 
 ## 🚀 Features
 
-* **Custom API Group:** `gadgets.example.com`
+* **Custom API Group:** `gadgets.muntashirislam.com`
 * **API Version:** `v1`
 * **Resource Kind:** `Gadget`
 * **Secure Serving:** Uses **HTTPS with TLS** to secure communication between the $kube-apiserver$ and our custom API server.
@@ -75,7 +75,7 @@ kubectl get apiservices | grep gadget
 **Expected Output:**
 
 ```bash
-v1.gadgets.example.com   Local   True
+v1.gadgets.muntashirislam.com     gadgets/gadget-server   True        69m
 ```
 Check for the Custom Resource
 Ensure the new resource kind (`Gadget`) is available and recognized by the `$kubectl$` client.
@@ -103,7 +103,7 @@ kubectl create secret tls gadget-server-tls \
   --cert=tls.crt --key=tls.key
 ```
 
-###🏗️ Docker Build Notes
+### 🏗️ Docker Build Notes
 The included `Dockerfile` uses a multi-stage build to ensure a lean final image:
 
 Stage 1: Builds the static Go binary (targeting `linux/amd64` by default).
