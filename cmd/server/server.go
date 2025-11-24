@@ -12,7 +12,6 @@ func New() *APIServer {
 	s := &APIServer{
 		mux: http.NewServeMux(),
 	}
-
 	s.registerRoutes()
 	return s
 }

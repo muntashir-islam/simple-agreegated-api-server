@@ -1,0 +1,8 @@
+apiVersion: muntashirislam.com/v1
+kind: Gadget
+metadata:
+  name: my-first-gadget
+  namespace: gadgets   # optional, must match your namespace
+spec:
+  size: large
+  color: red

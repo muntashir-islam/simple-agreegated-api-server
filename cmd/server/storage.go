@@ -11,13 +11,13 @@ func NewMemoryStore() *MemoryStore {
 func (s *MemoryStore) List() GadgetList {
 	return GadgetList{
 		Kind:       "GadgetList",
-		APIVersion: "gadgets.example.com/v1",
+		APIVersion: "gadgets.muntashirislam.com/v1",
 		Items:      s.items,
 	}
 }
 
 func (s *MemoryStore) Create(g Gadget) {
 	g.Kind = "Gadget"
-	g.APIVersion = "gadgets.example.com/v1"
+	g.APIVersion = "gadgets.muntashirislam.com/v1"
 	s.items = append(s.items, g)
 }
